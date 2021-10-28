@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1485px" height="650" style="border: 1px solid #000000"></canvas>
+<script>
+    class Shape {
+        x;
+        y;
+        radius;
+        constructor(x, y, radius, color) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+
+        }
+        getx() {
+            return this.x;
+        }
+
+        setx() {
+            this.x = Math.random() * window.innerWidth;
+        }
+
+        gety() {
+            return this.y;
+        }
+
+        sety() {
+            this.y = Math.random() * window.innerWidth;
+        }
+
+        getRadius() {
+            return this.radius;
+        }
+
+        setRadius() {
+            this.radius = Math.floor(Math.random() * 80);
+        }
+
+        getRandomColor() {
+            console.log('co goi ham nay kh')
+            let red = Math.floor(Math.random() * 255);
+            let green = Math.floor(Math.random() * 255);
+            let blue = Math.floor(Math.random() * 255);
+            console.log('return --> ', "rgb(" + red + "," + blue + "," + green + ")")
+            return "rgb(" + red + "," + blue + "," + green + ")";
+        }
+
+        createMultipleCircle() {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+            console.log('This. Color --> ', this.color)
+            ctx.fillStyle = this.getRandomColor();
+            ctx.fill();
+        }
+    }
+
+    circle = new Shape();
+    for (let i = 0; i < 30; i++) {
+        circle.setx();
+        circle.sety();
+        circle.setRadius();
+
+        circle.createMultipleCircle();
+    }
+
+
+</script>
+</body>
+</html>
